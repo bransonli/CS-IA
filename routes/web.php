@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TopicController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layout/nav');
+    return view('pages/dashboard');
 });
+
+
+Route::get('/topics/{subject}', 'TopicController@show');
+Route::get('/replies/{topic}', 'ReplyController@show');
