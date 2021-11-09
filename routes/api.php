@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Topic;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post('topics', function(Request $request) {
+    return Topic::create($request->all);
+});
+
+Route::delete('topics/{id}', function($id) {
+    Topic::find($id)->delete();
+});
+

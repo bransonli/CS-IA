@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('pages/dashboard');
 });
 
+Route::get('/subjects', function () {
+    return view('pages/subjects');
+});
+
 
 Route::get('/topics/{subject}', 'TopicController@show');
 Route::get('/replies/{topic}', 'ReplyController@show');
+
+Route::get('/topic/create', 'TopicController@create');
+Route::post('/topic', 'TopicController@store');
+Route::get('/topic/{id}/delete', 'TopicController@destroy');

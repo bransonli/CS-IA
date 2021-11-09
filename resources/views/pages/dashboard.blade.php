@@ -12,7 +12,7 @@
         <div class="row"></div>
             <div class="col-sm">
                 <h1>Questions asked and to be asked</h1>
-                <button type="button" class="btn btn-primary btn-lg btn-block">Subject specific</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block"><a href= "/subjects"> Subject specific </a></button>
                 <button type="button" class="btn btn-primary btn-lg btn-block">Extended Essays</button>
                 <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
                 <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
