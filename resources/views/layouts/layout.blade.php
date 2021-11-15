@@ -10,7 +10,7 @@
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
-    <body class="w3-theme-l5">
+    <body class="w3-theme-l5" >
         <!-- Navbar -->
         <div class="w3-top">
         <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
@@ -43,10 +43,9 @@
         <br>
         <br>
         <br>
-
-    @yield('content')
-
-
+        <div style="margin:5%;">
+            @yield('content')
+        </div>
         
         <!-- End Page Container -->
         <br>

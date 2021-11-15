@@ -17,14 +17,19 @@ Route::get('/', function () {
     return view('pages/dashboard');
 });
 
-Route::get('/subjects', function () {
-    return view('pages/subjects');
-});
+Route::get('/subjects', 'SubjectController@show');
 
 
 Route::get('/topics/{subject}', 'TopicController@show');
-Route::get('/replies/{topic}', 'ReplyController@show');
+Route::get('/replies/{topic_name}', 'ReplyController@show');
 
-Route::get('/topic/create', 'TopicController@create');
+Route::get('/topic/create/{subject}', 'TopicController@create');
 Route::post('/topic', 'TopicController@store');
 Route::get('/topic/{id}/delete', 'TopicController@destroy');
+Route::get('/topic/{id}/edit', 'TopicController@edit');
+Route::get('/topic/{id}/update', 'TopicController@update');
+
+Route::post('/reply/{topic_id}', 'ReplyController@store');
+Route::get('/reply/{id}/delete', 'ReplyController@destroy');
+Route::get('/reply/{id}/edit', 'ReplyController@edit');
+Route::get('/reply/{id}/update', 'ReplyController@update');

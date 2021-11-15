@@ -7,13 +7,12 @@
 
 @section('content')
 
-<a href="/topic/create">Create new topic</a>
+<a href="/">Go home</a>
 
 <li>
-    <ol><a href="/topics/physics">physics</a></ol>
-    <ol><a href="/topics/langlit">langlit</a></ol>
-    <ol><a href="/topics/chinese">chinese</a></ol>
-
+  @foreach ($subjects as $subject)
+      <ol><a href="/topics/{{$subject->name}}">{{ $subject->name }}</a></ol>
+  @endforeach
 </li>
 
 

@@ -8,27 +8,16 @@
 @section('content')
 
 <div class = "w3-text-teal w3-center">
-    <form method ='POST' action ="/topic" >
+    <form method ='PUT' action ="/topic/{{$topic->id}}/update" >
         @csrf
         <div> 
-            <label class ="label" for="name">Topic</label>
+            <label class ="label" for="name" >Topic</label>
             <div class="control">
-                <input type="text" name="name" id = "name">
+                <input type="text" name="name" id = "name" value="{{$topic->name}}">
                 <br>
             </div>
         </div>
         <br>
-
-        <div>
-            <label class ="label" for="subject">Subject</label>
-            <div class="control">
-                <select type="text" name="subject_id" id = "subject_id">
-                        <option value="{{$subject->id}}">{{$subject->name}}</option>
-                </select>
-            </div>
-            <br>
-        </div>
-            
     
         <div>
             <div class="control">
