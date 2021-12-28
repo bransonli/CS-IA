@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TopicController;
+use App\Http\Controllers\DiscussionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,19 +17,25 @@ Route::get('/', function () {
     return view('pages/dashboard');
 });
 
-Route::get('/subjects', 'SubjectController@show');
+//Subject pages for different features
+Route::get('/subjects/discussion', 'SubjectController@show_discussion_subjects');
+Route::get('/subjects/discussion', 'SubjectController@show_notes_subjects');
 
+//Discussions
+Route::get('/subjects/{subject}/discussion', 'DiscussionController@show');
+Route::get('/subjects/{subject}/discussion/create', 'DiscussionController@create');
+Route::post('/subjects/{subject}/discussion/store', 'DiscussionController@store');
+Route::get('/subjects/{subject}/discussion/{id}/delete', 'DiscussionController@destroy');
+Route::get('/subjects/{subject}/discussion/{id}/edit', 'DiscussionController@edit');
+Route::get('/subjects/{subject}/discussion/{id}/update', 'DiscussionController@update');
 
-Route::get('/topics/{subject}', 'TopicController@show');
-Route::get('/replies/{topic_name}', 'ReplyController@show');
+//Replies
+Route::get('/subjects/{subject}/discussion/{id}', 'ReplyController@show');
+Route::post('/subjects/{subject}/discussion/{discussion_id}/reply', 'ReplyController@store');
+Route::get('/subjects/{subject}/discussion/{discussion_id}/reply/{id}/delete', 'ReplyController@destroy');
+Route::get('/subjects/{subject}/discussion/{discussion_id}/reply/{id}/edit', 'ReplyController@edit');
+Route::put('/subjects/{subject}/discussion/{discussion_id}/reply/{id}/update', 'ReplyController@update');
 
-Route::get('/topic/create/{subject}', 'TopicController@create');
-Route::post('/topic', 'TopicController@store');
-Route::get('/topic/{id}/delete', 'TopicController@destroy');
-Route::get('/topic/{id}/edit', 'TopicController@edit');
-Route::get('/topic/{id}/update', 'TopicController@update');
-
-Route::post('/reply/{topic_id}', 'ReplyController@store');
-Route::get('/reply/{id}/delete', 'ReplyController@destroy');
-Route::get('/reply/{id}/edit', 'ReplyController@edit');
-Route::get('/reply/{id}/update', 'ReplyController@update');
+//Notes
+Route::get('/subjects/{subject}/notes', 'NotesController@show');
+// TODO Make notes model with migration

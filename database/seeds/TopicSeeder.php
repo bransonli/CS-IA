@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TopicSeeder extends Seeder
+class DiscussionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class TopicSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('topics')->insert([
+        DB::table('discussions')->insert([
             'name' => "electricity",
             'subject' => "physics"
 

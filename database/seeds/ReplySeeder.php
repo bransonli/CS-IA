@@ -13,7 +13,7 @@ class ReplySeeder extends Seeder
     {
         DB::table('replies')->insert([
             'content' => Str::random(10),
-            'topic_id' => 1,
+            'discussion_id' => 1,
 
         ]);
     }

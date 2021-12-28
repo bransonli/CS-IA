@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Topic;
+use App\Models\Discussion;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::post('topics', function(Request $request) {
-    return Topic::create($request->all);
+Route::post('discussions', function(Request $request) {
+    return Discussion::create($request->all);
 });
 
-Route::delete('topics/{id}', function($id) {
-    Topic::find($id)->delete();
+Route::delete('discussions/{id}', function($id) {
+    Discussion::find($id)->delete();
 });
 

@@ -17,8 +17,8 @@ class CreateRepliesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string("content");
-            $table->integer('topic_id')->unsigned();;
-            $table->foreign('topic_id')->references('id')->on('topics'); 
+            $table->integer('discussion_id')->unsigned();;
+            $table->foreign('discussion_id')->references('id')->on('discussions'); 
             /** $table->foreign("user_id")->reference('id')->on('users'); */
         });
 
