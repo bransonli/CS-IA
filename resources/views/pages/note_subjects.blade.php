@@ -13,7 +13,7 @@
 
 <li>
   @foreach ($subjects as $subject)
-      <ol><a href="/subjects/{{$subject->name}}/notes">{{ $subject->name }}</a></ol>
+      <ol><a href="/subjects/{{$subject->name}}/note">{{ $subject->name }}</a></ol>
   @endforeach
 </li>
 

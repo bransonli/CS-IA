@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiscussionsTable extends Migration
+class CreateNotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,16 @@ class CreateDiscussionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('discussions', function (Blueprint $table) {
+        Schema::create('notes', function (Blueprint $table) {
             $table->increments("id");
             $table->timestamps();
             $table->string("name");
+            $table->string("description");
+            $table->string("file_name");
             $table->integer('subject_id')->unsigned();
             $table->foreign('subject_id')->references('id')->on('subjects'); 
+
+
         });
     }
 
@@ -29,6 +33,6 @@ class CreateDiscussionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('discussions');
+        Schema::dropIfExists('notes');
     }
 }

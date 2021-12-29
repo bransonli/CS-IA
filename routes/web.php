@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 //Subject pages for different features
 Route::get('/subjects/discussion', 'SubjectController@show_discussion_subjects');
-Route::get('/subjects/discussion', 'SubjectController@show_notes_subjects');
+Route::get('/subjects/note', 'SubjectController@show_note_subjects');
 
 //Discussions
 Route::get('/subjects/{subject}/discussion', 'DiscussionController@show');
@@ -37,5 +37,5 @@ Route::get('/subjects/{subject}/discussion/{discussion_id}/reply/{id}/edit', 'Re
 Route::put('/subjects/{subject}/discussion/{discussion_id}/reply/{id}/update', 'ReplyController@update');
 
 //Notes
-Route::get('/subjects/{subject}/notes', 'NotesController@show');
-// TODO Make notes model with migration
+Route::get('/subjects/{subject}/note', 'NoteController@show');
+Route::get('/subjects/{subject}/note/create', 'NoteController@create');

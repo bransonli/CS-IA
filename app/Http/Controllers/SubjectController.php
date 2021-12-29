@@ -16,11 +16,11 @@ class SubjectController extends Controller
         ]);
     }
 
-    public function show_notes_subjects()
+    public function show_note_subjects()
     {
         $subjects = Subject::all();
 
-        return view('pages.notes_subjects', [
+        return view('pages.note_subjects', [
             'subjects' => $subjects
         ]);
     }
