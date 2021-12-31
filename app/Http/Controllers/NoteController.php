@@ -19,14 +19,43 @@ class NoteController extends Controller
         ]);
     }
 
-    public function create($subject)
+    public function upload($subject)
     {
         // shows view to create new resource 
-        return view('pages/create_notes', [
+        return view('pages/upload_note', [
             'subject' => Subject::where("name", $subject)->first(),
 
         ]);
 
+    }
+
+    public function store($subject)
+    {
+        request()->all();
+        // stores the create form 
+        $subject_id = Subject::where("name", $subject)->first()->id;
+        
+        $note = new Note();
+        $note->name = request('name');
+        $note->description = request('description');
+
+        // Request note file
+        $file = request('note');
+
+        // Creating file name
+        $file_name = time().$file->getClientOriginalExtension();
+        $note->subject_id = $subject_id;
+        $note->file_name = $file_name;
+        $note->save();
+
+        // Moving file to path // Continue working on this
+        $destinationPath = 'uploads';
+        $file->move($destinationPath, $file->getClientOriginalName());
+
+        // Redirect
+        $subject = Subject::where("id", $subject)->first();
+        $url = 1; // Url here
+        return redirect($url);
     }
 
 
