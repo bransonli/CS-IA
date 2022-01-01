@@ -39,4 +39,5 @@ Route::put('/subjects/{subject}/discussion/{discussion_id}/reply/{id}/update', '
 //Notes
 Route::get('/subjects/{subject}/note', 'NoteController@show');
 Route::get('/subjects/{subject}/note/upload', 'NoteController@upload');
-Route::get('/subjects/{subject}/note/store', 'NoteController@store');
+Route::post('/subjects/{subject}/note/store', 'NoteController@store');
+Route::get('/subjects/{subject}/note/{note_id}/download', 'NoteController@download');

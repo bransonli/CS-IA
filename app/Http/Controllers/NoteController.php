@@ -33,7 +33,8 @@ class NoteController extends Controller
     {
         request()->all();
         // stores the create form 
-        $subject_id = Subject::where("name", $subject)->first()->id;
+        $subject = Subject::where("name", $subject)->first();
+        $subject_id = $subject->id;
         
         $note = new Note();
         $note->name = request('name');
@@ -43,20 +44,29 @@ class NoteController extends Controller
         $file = request('note');
 
         // Creating file name
-        $file_name = time().$file->getClientOriginalExtension();
+        $file_name = time().'.'.$file->getClientOriginalExtension();
         $note->subject_id = $subject_id;
         $note->file_name = $file_name;
         $note->save();
 
         // Moving file to path // Continue working on this
         $destinationPath = 'uploads';
-        $file->move($destinationPath, $file->getClientOriginalName());
+        $file->move($destinationPath, $file_name);
 
         // Redirect
-        $subject = Subject::where("id", $subject)->first();
-        $url = 1; // Url here
+        $url = '/subjects/'.$subject->name.'/note'; 
         return redirect($url);
     }
+
+    public function download($subject, $note_id)
+    {
+
+        $note = Note::where("id", $note_id)->first();
+        $path ="uploads\\".$note->file_name;
+
+        return response()->download(public_path($path));
+
+    }  
 
 
 }
