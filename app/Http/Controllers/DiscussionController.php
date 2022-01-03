@@ -14,7 +14,7 @@ class DiscussionController extends Controller
         
         $subject = Subject::where("name", $subject)->first();
 
-        return view('pages.discussion_subjects', [
+        return view('pages.discussions', [
             'discussions' => Discussion::where("subject_id", $subject->id)->get(),
             'subject' => $subject
         ]);

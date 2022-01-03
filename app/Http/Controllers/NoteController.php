@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Models\Note;
 use App\Models\Subject;
@@ -47,11 +48,10 @@ class NoteController extends Controller
         $file_name = time().'.'.$file->getClientOriginalExtension();
         $note->subject_id = $subject_id;
         $note->file_name = $file_name;
-        $note->save();
 
-        // Moving file to path // Continue working on this
-        $destinationPath = 'uploads';
-        $file->move($destinationPath, $file_name);
+        // Saving note to database and storage
+        $note->save();
+        request()->file('note')->storeAs('notes', $file_name);
 
         // Redirect
         $url = '/subjects/'.$subject->name.'/note'; 
@@ -62,9 +62,23 @@ class NoteController extends Controller
     {
 
         $note = Note::where("id", $note_id)->first();
-        $path ="uploads\\".$note->file_name;
 
-        return response()->download(public_path($path));
+        return Storage::download('notes/'.$note->file_name);
+
+
+    }  
+
+    public function delete($subject_name, $note_id)
+    {
+        // Deleting on both database and storage
+        $note = Note::where("id", $note_id)->first();
+        Storage::delete('notes/'.$note->file_name);
+        $note->delete();
+
+        // Redirect
+        $subject = Subject::where("name", $subject_name)->first();
+        $url = '/subjects/'.$subject->name.'/note'; 
+        return redirect($url);
 
     }  
 

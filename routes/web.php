@@ -41,3 +41,4 @@ Route::get('/subjects/{subject}/note', 'NoteController@show');
 Route::get('/subjects/{subject}/note/upload', 'NoteController@upload');
 Route::post('/subjects/{subject}/note/store', 'NoteController@store');
 Route::get('/subjects/{subject}/note/{note_id}/download', 'NoteController@download');
+Route::get('/subjects/{subject}/note/{note_id}/delete', 'NoteController@delete');
