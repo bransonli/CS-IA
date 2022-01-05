@@ -39,7 +39,7 @@ class DiscussionController extends Controller
         $discussion->name = request('name');
         $discussion->subject_id = $subject->id;
         $discussion->save();
-        $url = "/subjects/".$subject->name;
+        $url = "/subjects/".$subject->name."/discussion";
 
         return redirect($url);
     }
@@ -70,7 +70,7 @@ class DiscussionController extends Controller
         $discussion->save();
         $subject = Subject::where("id", $discussion->subject_id)->first();
 
-        $url = "/subjects/".$subject->name;
+        $url = "/subjects/".$subject->name."/discussion";
         return redirect($url);
     }
 
@@ -83,7 +83,7 @@ class DiscussionController extends Controller
         $subject = Subject::where("id", $discussion->subject_id)->first();
         Reply::where("discussion_id", $discussion->id )->delete();
         Discussion::find($id)->delete();
-        $url = "/subjects/".$subject->name;
+        $url = "/subjects/".$subject->name."/discussion";
 
         return redirect($url);
     }

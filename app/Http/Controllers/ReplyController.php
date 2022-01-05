@@ -53,26 +53,27 @@ class ReplyController extends Controller
         
     }
 
-    public function update($discussion, $id) 
+    public function update($subject_name, $discussion_id, $id) 
     {
         request()->all();
         //submission of the update form 
         $reply = Reply::find($id);
-        $reply->name = request('name');
+        $reply->content = request('content');
         $reply->save();
         $discussion = Discussion::where("id", $reply->discussion_id)->first();
 
-        $url = "/discussions/".$discussion->name;
+        $url = "/subjects/".$subject_name."/discussion/".$discussion->id;
+
         return redirect($url);
     }
 
-    public function destroy($subject, $discussion_id, $id)
+    public function destroy($subject_name, $discussion_id, $id)
     {
         //remove the stored resource 
         $reply = Reply::where("id", $id)->first();
         $discussion = Discussion::where("id", $reply->discussion_id)->first();
         Reply::where("id", $reply->id )->delete();
-        $url = "/subjects/{subject}/discussion/".$discussion->id;
+        $url = "/subjects/".$subject_name."/discussion/".$discussion->id;
 
         return redirect($url);
     }

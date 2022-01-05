@@ -34,7 +34,7 @@ Route::get('/subjects/{subject}/discussion/{id}', 'ReplyController@show');
 Route::post('/subjects/{subject}/discussion/{discussion_id}/reply', 'ReplyController@store');
 Route::get('/subjects/{subject}/discussion/{discussion_id}/reply/{id}/delete', 'ReplyController@destroy');
 Route::get('/subjects/{subject}/discussion/{discussion_id}/reply/{id}/edit', 'ReplyController@edit');
-Route::put('/subjects/{subject}/discussion/{discussion_id}/reply/{id}/update', 'ReplyController@update');
+Route::post('/subjects/{subject}/discussion/{discussion_id}/reply/{id}/update', 'ReplyController@update');
 
 //Notes
 Route::get('/subjects/{subject}/note', 'NoteController@show');
