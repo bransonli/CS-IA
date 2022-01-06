@@ -20,6 +20,7 @@ Route::get('/', function () {
 //Subject pages for different features
 Route::get('/subjects/discussion', 'SubjectController@show_discussion_subjects');
 Route::get('/subjects/note', 'SubjectController@show_note_subjects');
+Route::get('/subjects/resource', 'SubjectController@show_resource_subjects');
 
 //Discussions
 Route::get('/subjects/{subject}/discussion', 'DiscussionController@show');
@@ -31,7 +32,7 @@ Route::get('/subjects/{subject}/discussion/{id}/update', 'DiscussionController@u
 
 //Replies
 Route::get('/subjects/{subject}/discussion/{id}', 'ReplyController@show');
-Route::post('/subjects/{subject}/discussion/{discussion_id}/reply', 'ReplyController@store');
+Route::post('/subjects/{subject}/discussion/{discussion_id}/reply/store', 'ReplyController@store');
 Route::get('/subjects/{subject}/discussion/{discussion_id}/reply/{id}/delete', 'ReplyController@destroy');
 Route::get('/subjects/{subject}/discussion/{discussion_id}/reply/{id}/edit', 'ReplyController@edit');
 Route::post('/subjects/{subject}/discussion/{discussion_id}/reply/{id}/update', 'ReplyController@update');
@@ -42,3 +43,10 @@ Route::get('/subjects/{subject}/note/upload', 'NoteController@upload');
 Route::post('/subjects/{subject}/note/store', 'NoteController@store');
 Route::get('/subjects/{subject}/note/{note_id}/download', 'NoteController@download');
 Route::get('/subjects/{subject}/note/{note_id}/delete', 'NoteController@delete');
+
+//Resources
+Route::get('/subjects/{subject_name}/resource', 'ResourceController@show');
+Route::post('/subjects/{subject_name}/resource/store', 'ResourceController@store');
+Route::get('/subjects/{subject_name}//resource/{id}/delete', 'ResourceController@destroy');
+Route::get('/subjects/{subject_name}/resource/{id}/edit', 'ResourceController@edit');
+Route::post('/subjects/{subject_name}/resource/{id}/update', 'ResourceController@update');

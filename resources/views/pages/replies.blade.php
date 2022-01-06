@@ -67,7 +67,7 @@
 <br>
 <br>
 
-<form method ='POST' action ="/subjects/{{$subject->name}}/discussion/{{$discussion->id}}/reply" >
+<form method ='POST' action ="/subjects/{{$subject->name}}/discussion/{{$discussion->id}}/reply/store" >
     @csrf
     <div> 
         <div class="control">

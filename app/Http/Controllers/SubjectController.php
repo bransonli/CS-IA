@@ -24,4 +24,13 @@ class SubjectController extends Controller
             'subjects' => $subjects
         ]);
     }
+
+    public function show_resource_subjects()
+    {
+        $subjects = Subject::all();
+
+        return view('pages.resource_subjects', [
+            'subjects' => $subjects
+        ]);
+    }
 }
