@@ -46,7 +46,11 @@ Route::get('/subjects/{subject}/note/{note_id}/delete', 'NoteController@delete')
 
 //Resources
 Route::get('/subjects/{subject_name}/resource', 'ResourceController@show');
+Route::get('/subjects/{subject_name}/resource/create', 'ResourceController@create');
 Route::post('/subjects/{subject_name}/resource/store', 'ResourceController@store');
-Route::get('/subjects/{subject_name}//resource/{id}/delete', 'ResourceController@destroy');
 Route::get('/subjects/{subject_name}/resource/{id}/edit', 'ResourceController@edit');
+Route::get('/subjects/{subject_name}/resource/{id}/delete', 'ResourceController@destroy');
 Route::post('/subjects/{subject_name}/resource/{id}/update', 'ResourceController@update');
+
+//Search
+Route::get('/search/{search_term}', 'SearchController@search');

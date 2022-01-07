@@ -12,10 +12,20 @@ class ResourceController extends Controller
     {
         $subject = Subject::where("name", $subject_name)->first();
 
-        return view('pages.replies', [
+        return view('pages.resources', [
             'resources' => Resource::where("subject_id", $subject->id)->get(),
             'subject' => $subject,
         ]);
+    }
+
+    public function create($subject_name)
+    {
+        // shows view to create new resource 
+        return view('pages/create_resource', [
+            'subject' => Subject::where("name", $subject_name)->first(),
+
+        ]);
+
     }
 
     public function store($subject_name)
@@ -26,12 +36,12 @@ class ResourceController extends Controller
         
         $resource = new Resource();
         $resource->name = request('name');
-        $resource->url = request('url');
+        $resource->link = request('link');
         $resource->description = request('description');
         $resource->subject_id = $subject->id;
         $resource->save();
 
-        $url = "/subjects/{subject}/subject/".$subject->id;
+        $url = "/subjects/".$subject_name."/resource";
 
         return redirect($url);
     }
@@ -59,14 +69,13 @@ class ResourceController extends Controller
         $resource = Resource::find($id);
 
         $resource->name = request('name');
-        $resource->url = request('url');
+        $resource->link = request('link');
         $resource->description = request('description');
 
         $resource->save();
         $subject = Subject::where("id", $resource->subject_id)->first();
 
-        $url = "/subjects/".$subject_name."/subject/".$subject->id;
-
+        $url = "/subjects/".$subject_name."/resource";
         return redirect($url);
     }
 
@@ -76,7 +85,7 @@ class ResourceController extends Controller
         $resource = Resource::where("id", $id)->first();
         $subject = Subject::where("id", $resource->subject_id)->first();
         Resource::where("id", $resource->id )->delete();
-        $url = "/subjects/".$subject_name."/subject/".$subject->id;
+        $url = "/subjects/".$subject_name."/resource";
 
         return redirect($url);
     }

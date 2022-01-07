@@ -8,7 +8,7 @@
 
 <h1>Resources</h1>
 
-<a href="/subjects/{{$subject->name}}/resource/">Add a resource (make this a modal)</a> 
+<a href="/subjects/{{$subject->name}}/resource/create">Add a resource (make this a modal)</a> 
 <br>
 <a href="/subjects/resource">Check out resources for other subjects</a>
 <br>
