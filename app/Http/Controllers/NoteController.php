@@ -23,7 +23,7 @@ class NoteController extends Controller
     public function upload($subject)
     {
         // shows view to create new resource 
-        return view('pages/upload_note', [
+        return view('pages/upload_note', [ 
             'subject' => Subject::where("name", $subject)->first(),
 
         ]);
