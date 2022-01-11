@@ -19,14 +19,16 @@ class SubjectSeeder extends Seeder
 
 
         $subjects = [
-            ['name' => 'Physics'],
-            ['name' => 'Math'],
-            ['name' => 'Computer science'],
-            ['name' => 'Langlit'],
-            ['name' => 'Chinese'],
+            ['id' => 1, 'name' => 'Physics',],
+            ['id' => 2, 'name' => 'Math'],
+            ['id' => 3, 'name' => 'Computer science'],
+            ['id' => 4, 'name' => 'Langlit'],
+            ['id' => 5, 'name' => 'Chinese'],
         ];        
         
-        DB::table('subjects')->insert($subjects);
+        foreach($subjects as $subject){
+            Subject::create($subject);
+        }
     }
 }
 
