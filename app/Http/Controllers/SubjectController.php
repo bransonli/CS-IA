@@ -33,4 +33,13 @@ class SubjectController extends Controller
             'subjects' => $subjects
         ]);
     }
+
+    public function show_dashboard()
+    {
+        $subjects = Subject::all();
+
+        return view('pages.dashboard', [
+            'subjects' => $subjects
+        ]);
+    }
 }

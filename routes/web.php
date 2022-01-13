@@ -13,14 +13,13 @@ use App\Http\Controllers\DiscussionController;
 |
 */
 
-Route::get('/', function () {
-    return view('pages/dashboard');
-});
-
 //Subject pages for different features
 Route::get('/subjects/discussion', 'SubjectController@show_discussion_subjects');
 Route::get('/subjects/note', 'SubjectController@show_note_subjects');
 Route::get('/subjects/resource', 'SubjectController@show_resource_subjects');
+
+// Dashboard
+Route::get('/', 'SubjectController@show_dashboard');
 
 //Discussions
 Route::get('/subjects/{subject}/discussion', 'DiscussionController@show');

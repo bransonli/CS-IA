@@ -13,9 +13,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
-            <a href= "/subjects/discussion"><button type="button" class="btn btn-light btn-lg btn-block"> Discussions </button></a>
-            <a href= "/subjects/note"><button type="button" class="btn btn-light btn-lg btn-block"> Notes </button></a>
-            <a href= "/subjects/resource"><button type="button" class="btn btn-light btn-lg btn-block"> Resource List </button></a>
+            @foreach ($subjects as $subject)
+                <a href="/subjects/{{$subject->name}}/discussion"><button type="button" class="btn btn-light btn-lg btn-block">{{ $subject->name }}</button></a>
+            @endforeach
         </div>
     </div>
 </div>
@@ -26,9 +26,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
-            <a href= "/subjects/discussion"><button type="button" class="btn btn-light btn-lg btn-block"> Discussions </button></a>
-            <a href= "/subjects/note"><button type="button" class="btn btn-light btn-lg btn-block"> Notes </button></a>
-            <a href= "/subjects/resource"><button type="button" class="btn btn-light btn-lg btn-block"> Resource List </button></a>
+            @foreach ($subjects as $subject)
+                <a href="/subjects/{{$subject->name}}/note"><button type="button" class="btn btn-light btn-lg btn-block">{{ $subject->name }}</button></a>
+            @endforeach
         </div>
     </div>
 </div>
@@ -40,9 +40,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
-            <a href= "/subjects/discussion"><button type="button" class="btn btn-light btn-lg btn-block"> Discussions </button></a>
-            <a href= "/subjects/note"><button type="button" class="btn btn-light btn-lg btn-block"> Notes </button></a>
-            <a href= "/subjects/resource"><button type="button" class="btn btn-light btn-lg btn-block"> Resource List </button></a>
+            @foreach ($subjects as $subject)
+                <a href="/subjects/{{$subject->name}}/resource"><button type="button" class="btn btn-light btn-lg btn-block">{{ $subject->name }}</button></a>
+            @endforeach
         </div>
     </div>
 </div>
