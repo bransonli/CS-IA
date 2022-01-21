@@ -16,7 +16,7 @@
     <body style="background-color:lightgrey">
         <div class="sidebar">
             <ul>
-                <li>About</li>
+                <li><a href='/'>Dashboard</a></li>
                 <li>Services</li>
                 <li>Something</li>
             </ul>
